@@ -1,9 +1,9 @@
 page-home {
     .center {
         margin: auto;
-        width: 60%;
+        width: 70%;
         border: none;
-        padding: 10px;
+        padding: 0px;
         }
 
         .logo_correios{
@@ -12,17 +12,17 @@ page-home {
         }
 
         .bg-style {
-            background: rgb(255, 255, 255);
+            background: rgba(255, 255, 255, 0.644);
         }
         
-        .yellow_full_btn{
-            background:rgba(202, 166, 3, 0.973);
-            color: black;
+        .blue_full_btn{
+            background:rgb(33, 95, 140);
+            color: #ffffff;
         }
 
-        .yellow_btn{
-            border-color:rgba(202, 166, 3, 0.973);
-            color: rgba(202, 166, 3, 0.973);
+        .blue_btn{
+            border-color:rgb(33, 95, 140);
+            color: rgb(33, 95, 140);
         }
 
 
