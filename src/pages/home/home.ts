@@ -24,7 +24,7 @@ export class HomePage {
   login(){
     this.loginService.authenticate(this.creds)
       .subscribe(response => {
-        console.log(response.headers.get('Authorization'));
+        this.loginService.successfulLogin(response.headers.get('Authorization'));
         this.navCtrl.setRoot('EncomendasPage');
       },
       error => {});   
