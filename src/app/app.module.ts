@@ -10,6 +10,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginService } from '../security/login.service';
 import { HttpClientModule } from '@angular/common/http';
 import { StorageService } from '../services/storage.service';
+import { EncomendaService } from '../services/encomendas.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { StorageService } from '../services/storage.service';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     LoginService,
     HttpClientModule,
-    StorageService
+    StorageService,
+    EncomendaService
   ]
 })
 export class AppModule {}
