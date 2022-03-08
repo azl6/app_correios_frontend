@@ -30,6 +30,7 @@ export class EncomendasPage {
         console.log(response);
       },
       error => {
+        console.log("caiu no erro");
         console.log(error);
       });
   }

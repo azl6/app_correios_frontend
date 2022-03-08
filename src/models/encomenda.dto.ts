@@ -7,6 +7,9 @@ export interface EncomendaDTO {
         bairro,
         rua,
         numero,
+        dataDeEnvio: string,
+        previsaoDeEntrega: string,
+        status: string,
         cliente: {
             id,
             nome,
