@@ -14,7 +14,14 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-fab bottom right>
+    <button navPush="INSERTPAGENAMEHERE" ion-fab mini><ion-icon name="add"></ion-icon></button>
+   </ion-fab>
+
+  <ion-searchbar></ion-searchbar>
+
   <ion-list>
+
     <button ion-item *ngFor="let item of items">
       <ion-thumbnail item-start>
         <img src="assets/imgs/pacote_correios.jpg">
