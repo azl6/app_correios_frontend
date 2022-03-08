@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { EncomendaDTO } from '../../models/encomenda.dto';
 
 /**
  * Generated class for the NovaEncomendaPage page.
@@ -14,6 +15,26 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'nova-encomenda.html',
 })
 export class NovaEncomendaPage {
+
+  novaEncomenda : EncomendaDTO = {
+    codigo: "",
+    enderecoDeEntrega: {
+      id: "",
+      estado: "",
+      cidade: "",
+      bairro: "",
+      rua: "",
+      numero: "",
+      dataDeEnvio: "",
+      previsaoDeEntrega: "",
+      status: "",
+      cliente: {
+        id: "",
+        nome: "",
+        email: ""
+      }
+    },
+  };
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
