@@ -21,13 +21,11 @@ export class EncomendaService {
         public storage: StorageService) {
     }
 
-    findAll() : Observable<EncomendaDTO>  {
+    findAll() : Observable<EncomendaDTO[]>  {
         this.user = this.storage.getLocalUser();
-
         console.log(this.user);
 
-
-        return this.http.get<EncomendaDTO>(`${API_CONFIG.baseUrl}/encomendas`, {headers: {"Authorization": "Bearer " + this.user.token}});
+        return this.http.get<EncomendaDTO[]>(`${API_CONFIG.baseUrl}/encomendas`, {headers: {"Authorization": "Bearer " + this.user.token}});
 
         
     }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { EncomendaDTO } from '../../models/encomenda.dto';
 import { EncomendaService } from '../../services/encomendas.service';
 
 /**
@@ -16,6 +17,8 @@ import { EncomendaService } from '../../services/encomendas.service';
 })
 export class EncomendasPage {
 
+  items: EncomendaDTO[];
+
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
@@ -23,14 +26,11 @@ export class EncomendasPage {
   }
 
   ionViewDidLoad() {
-    console.log("entrou na funcao");
     this.encomendaService.findAll()
       .subscribe(response => {
-        console.log("chegou na resposta");
-        console.log(response);
+        this.items = response;
       },
       error => {
-        console.log("caiu no erro");
         console.log(error);
       });
   }
