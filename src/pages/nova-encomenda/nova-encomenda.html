@@ -6,7 +6,7 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>Registrar nova encomenda</ion-title>
+    <ion-title>Buscar nova encomenda</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -14,20 +14,13 @@
 
   <form>
     <ion-item>
-        <ion-label stacked>Email</ion-label>
-        <ion-input [(ngModel)]="creds.email" name="email" type="text"></ion-input>
+        <ion-label stacked>Código da encomenda</ion-label>
+        <ion-input [(ngModel)]="codigo" name="codigo" type="text"></ion-input>
       </ion-item>
-      
-      <ion-item>
-        <ion-label stacked>Senha</ion-label>
-        <ion-input [(ngModel)]="creds.senha" name="senha" type="password"></ion-input>
-      </ion-item>
-      
-      <br><br>
 
       <div class="center">
-      <button ion-button class="blue_full_btn" block (click)="login()">Entrar</button>
-      <button ion-button class="blue_btn" block outline >Registrar-se</button>
+      <button ion-button class="btn" block (click)="busca_encomenda(this.codigo)">Buscar encomenda</button>
+
     </div>
   </form>
 
