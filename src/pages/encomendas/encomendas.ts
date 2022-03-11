@@ -26,13 +26,7 @@ export class EncomendasPage {
   }
 
   ionViewDidLoad() {
-    this.encomendaService.findAll()
-      .subscribe(response => {
-        this.items = response;
-      },
-      error => {
-        console.log(error);
-      });
+    
   }
 
 }

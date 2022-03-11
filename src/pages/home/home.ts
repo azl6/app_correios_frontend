@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { MenuController, NavController } from 'ionic-angular';
 import { CredenciaisDTO } from '../../models/credenciais.dto';
-import { LoginService } from '../../security/login.service';
+import { LoginService } from '../../services/login.service';
+
 
 @Component({
   selector: 'page-home',

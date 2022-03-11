@@ -7,10 +7,10 @@ import { HomePage } from '../pages/home/home';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { LoginService } from '../security/login.service';
 import { HttpClientModule } from '@angular/common/http';
 import { StorageService } from '../services/storage.service';
 import { EncomendaService } from '../services/encomendas.service';
+import { LoginService } from '../services/login.service';
 
 @NgModule({
   declarations: [
