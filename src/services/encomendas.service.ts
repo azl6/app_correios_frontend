@@ -11,28 +11,20 @@ import { StorageService } from "./storage.service";
 @Injectable()
 export class EncomendaService {
 
-    user : LocalUser = {
-        token: "",
-        email: ""
-    }
-
     constructor(
         public http: HttpClient,
         public storage: StorageService) {
     }
 
     findAll() : Observable<EncomendaDTO[]>  {
-        this.user = this.storage.getLocalUser();
-        console.log(this.user);
 
-        return this.http.get<EncomendaDTO[]>(`${API_CONFIG.baseUrl}/encomendas`, {headers: {"Authorization": "Bearer " + this.user.token}});
+        return this.http.get<EncomendaDTO[]>(`${API_CONFIG.baseUrl}/encomendas`, {headers: {"Authorization": "Bearer " + this.storage.getLocalUser().token}});
     }
 
-    findByCodigo() : Observable<EncomendaDTO>  {
-        this.user = this.storage.getLocalUser();
-        console.log(this.user);
-
-        return this.http.get<EncomendaDTO>(`${API_CONFIG.baseUrl}/encomendas`, {headers: {"Authorization": "Bearer " + this.user.token}});
+    findLoggedUserEncomendas(){
+        console.log("tentando puxar o localuser de findloggeduserencomendas")
+        console.log(this.storage.getLocalUser());
+        return this.storage.getLocalUser().cliente.encomenda;
     }
 
 }

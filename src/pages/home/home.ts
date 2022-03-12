@@ -39,4 +39,8 @@ export class HomePage {
     this.menu.swipeEnable(true);
   }
 
+  ionViewDidLoad() {
+    this.loginService.logout();
+  }
+
 }

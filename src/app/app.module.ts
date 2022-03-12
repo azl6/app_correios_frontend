@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { StorageService } from '../services/storage.service';
 import { EncomendaService } from '../services/encomendas.service';
 import { LoginService } from '../services/login.service';
+import { ClienteService } from '../services/cliente.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { LoginService } from '../services/login.service';
     LoginService,
     HttpClientModule,
     StorageService,
-    EncomendaService
+    EncomendaService,
+    ClienteService
   ]
 })
 export class AppModule {}
