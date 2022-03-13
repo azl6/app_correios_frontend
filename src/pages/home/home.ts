@@ -32,6 +32,7 @@ export class HomePage {
   }
 
   ionViewWillEnter() {
+    this.loginService.logout();
     this.menu.swipeEnable(false);
   }
 

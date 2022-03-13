@@ -11,5 +11,27 @@
 </ion-header>
 
 <ion-content padding>
+  <form>
 
+    <ion-item>
+      <ion-label stacked>Nome</ion-label>
+      <ion-input [(ngModel)]="dados.nome" name="nome" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label stacked>Email</ion-label>
+        <ion-input [(ngModel)]="dados.email" name="email" type="text"></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label stacked>Senha</ion-label>
+        <ion-input [(ngModel)]="dados.senha" name="senha" type="password"></ion-input>
+      </ion-item>
+      
+      <br>
+
+      <div class="center">
+      <button ion-button class="blue_btn" block outline (click)="registrar()">Registrar-se</button>
+    </div>
+  </form>
 </ion-content>
