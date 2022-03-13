@@ -27,4 +27,8 @@ export class EncomendaService {
         return this.storage.getLocalUser().cliente.encomenda;
     }
 
+    findByCodigo(codigo: string): Observable<EncomendaDTO>{
+        return this.http.get<EncomendaDTO>(`${API_CONFIG.baseUrl}/encomendas/${codigo}`, {headers: {"Authorization": "Bearer " + this.storage.getLocalUser().token}});
+    }
+
 }
