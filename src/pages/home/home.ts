@@ -43,4 +43,8 @@ export class HomePage {
     this.loginService.logout();
   }
 
+  registrar(){
+    this.navCtrl.push("RegistroPage")
+  }
+
 }
