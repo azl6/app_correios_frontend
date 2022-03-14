@@ -22,7 +22,8 @@ export class EncomendaDetailsPage {
   }
 
   ionViewDidLoad() {
-    console.log(this.navParams.data);
+    this.encomenda = this.navParams.data;
+    console.log(this.encomenda);
   }
 
 }

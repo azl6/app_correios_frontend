@@ -18,7 +18,21 @@
         {{item?.nome}}
         </ion-card-title>
       <p>
-        {{item?.preco | currency}}
+        <b>Código:</b> {{encomenda?.codigo}}
+        <br>  
+        <b>Estado:</b> {{encomenda?.enderecoDeEntrega.estado}}
+        <br>
+        <b>Cidade:</b> {{encomenda?.enderecoDeEntrega.cidade}}
+        <br>
+        <b>Bairro:</b> {{encomenda?.enderecoDeEntrega.bairro}}
+        <br>
+        <b>Rua:</b> {{encomenda?.enderecoDeEntrega.rua}}
+        <br>
+        <b>Número:</b> {{encomenda?.enderecoDeEntrega.numero}}
+        <br>
+        <b>Status:</b> {{encomenda?.status}}
+
+        
       </p>
     </ion-card-content>
   </ion-card>
