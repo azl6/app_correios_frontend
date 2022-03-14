@@ -22,7 +22,7 @@
 
   <ion-list>
 
-    <button ion-item *ngFor="let item of items">
+    <button ion-item (click)="details()" *ngFor="let item of items">
       <ion-thumbnail item-start>
         <img src="assets/imgs/pacote_correios.jpg">
       </ion-thumbnail>

@@ -12,11 +12,13 @@ import { StorageService } from '../services/storage.service';
 import { EncomendaService } from '../services/encomendas.service';
 import { LoginService } from '../services/login.service';
 import { ClienteService } from '../services/cliente.service';
+import { EncomendaDetailsPage } from '../pages/encomenda-details/encomenda-details';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    EncomendaDetailsPage
   ],
   imports: [
     BrowserModule,
@@ -26,7 +28,8 @@ import { ClienteService } from '../services/cliente.service';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    EncomendaDetailsPage
   ],
   providers: [
     StatusBar,

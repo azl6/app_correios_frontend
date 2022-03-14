@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { EncomendaDTO } from '../../models/encomenda.dto';
 import { EncomendaService } from '../../services/encomendas.service';
+import { EncomendaDetailsPage } from '../encomenda-details/encomenda-details';
 
 /**
  * Generated class for the EncomendasPage page.
@@ -31,6 +32,10 @@ export class EncomendasPage {
   
   ionViewWillEnter(){
     this.items = this.encomendaService.findLoggedUserEncomendas();
+  }
+
+  details(){
+    this.navCtrl.setRoot(EncomendaDetailsPage)
   }
 
 }
