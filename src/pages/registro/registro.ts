@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AlertController, IonicPage, NavController, NavParams } from 'ionic-angular';
 import { API_CONFIG } from '../../config/api.config';
 import { ClienteDTO } from '../../models/cliente.dto';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the RegistroPage page.
@@ -27,7 +28,8 @@ export class RegistroPage {
   constructor(
       public navCtrl: NavController,
       public navParams: NavParams,
-      public http: HttpClient) {
+      public http: HttpClient,
+      public alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
@@ -48,7 +50,17 @@ export class RegistroPage {
       `${API_CONFIG.baseUrl}/clientes/new`, 
       dadosNotTyped)
       .subscribe(response => {
-        console.log("deu certo!")
+        let alert = this.alertCtrl.create({
+          title: 'Registro efetuado com sucesso!',
+          enableBackdropDismiss: false,
+          buttons: [
+              {
+                  text: 'Ok'
+              }
+          ]
+      });
+      alert.present();
+      this.navCtrl.setRoot(HomePage)
       }, error => {});
   }
 
