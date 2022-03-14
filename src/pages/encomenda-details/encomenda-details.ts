@@ -16,13 +16,13 @@ import { EncomendaDTO } from '../../models/encomenda.dto';
 })
 export class EncomendaDetailsPage {
 
-  item: EncomendaDTO;
+  encomenda: EncomendaDTO;
   
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad EncomendaDetailsPage');
+    console.log(this.navParams.data);
   }
 
 }

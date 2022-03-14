@@ -34,8 +34,8 @@ export class EncomendasPage {
     this.items = this.encomendaService.findLoggedUserEncomendas();
   }
 
-  details(){
-    this.navCtrl.setRoot(EncomendaDetailsPage)
+  details(encomenda: EncomendaDTO){
+    this.navCtrl.push(EncomendaDetailsPage, encomenda)
   }
 
 }
