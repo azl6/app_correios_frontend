@@ -11,31 +11,30 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card>
+
     <img src="assets/imgs/pacote_correios.jpg">
-    <ion-card-content>
-      <ion-card-title>
-        {{item?.nome}}
-        </ion-card-title>
-      <p>
-        <b>Código:</b> {{encomenda?.codigo}}
-        <br>  
-        <b>Estado:</b> {{encomenda?.enderecoDeEntrega.estado}}
-        <br>
-        <b>Cidade:</b> {{encomenda?.enderecoDeEntrega.cidade}}
-        <br>
-        <b>Bairro:</b> {{encomenda?.enderecoDeEntrega.bairro}}
-        <br>
-        <b>Rua:</b> {{encomenda?.enderecoDeEntrega.rua}}
-        <br>
-        <b>Número:</b> {{encomenda?.enderecoDeEntrega.numero}}
-        <br>
-        <b>Status:</b> {{encomenda?.status}}
 
-        
-      </p>
-    </ion-card-content>
-  </ion-card>
+    
 
-  <button ion-button class="red_full_btn center" block>Remover encomenda</button>
+    <br><br>
+    <ion-card>
+      <ion-card-content>
+        <p>
+          <b>Código:</b> {{encomenda?.codigo}}
+          <br>  
+          <b>Estado:</b> {{encomenda?.enderecoDeEntrega.estado}}
+          <br>
+          <b>Cidade:</b> {{encomenda?.enderecoDeEntrega.cidade}}
+          <br>
+          <b>Bairro:</b> {{encomenda?.enderecoDeEntrega.bairro}}
+          <br>
+          <b>Rua:</b> {{encomenda?.enderecoDeEntrega.rua}}
+          <br>
+          <b>Número:</b> {{encomenda?.enderecoDeEntrega.numero}}
+          <br>
+          <b>Status:</b> {{encomenda?.status}}
+        </p>
+      </ion-card-content>
+    </ion-card>
+
 </ion-content>

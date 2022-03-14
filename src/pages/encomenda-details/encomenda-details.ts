@@ -23,6 +23,18 @@ export class EncomendaDetailsPage {
 
   ionViewDidLoad() {
     this.encomenda = this.navParams.data;
+
+    switch(this.encomenda.enderecoDeEntrega.status){
+      case "PENDENTE_DE_ENVIO":
+        this.encomenda.enderecoDeEntrega.status = "Pendente de envio";
+        break;
+      case "ENTREGUE":
+        this.encomenda.enderecoDeEntrega.status = "Entregue";
+        break;
+      case "ENVIADO":
+        this.encomenda.enderecoDeEntrega.status = "Enviado";
+        break;
+    }
     console.log(this.encomenda);
   }
 
