@@ -26,12 +26,12 @@ export class EncomendasPage {
     public encomendaService: EncomendaService) {
   }
 
-  ionViewDidLoad(){
-
+  ionViewDidEnter(){
+    this.items = this.encomendaService.findLoggedUserEncomendas();
   }
   
   ionViewWillEnter(){
-    this.items = this.encomendaService.findLoggedUserEncomendas();
+    
   }
 
   details(encomenda: EncomendaDTO){

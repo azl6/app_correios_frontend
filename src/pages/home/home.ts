@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { MenuController, NavController } from 'ionic-angular';
 import { CredenciaisDTO } from '../../models/credenciais.dto';
 import { LoginService } from '../../services/login.service';
+import { StorageService } from '../../services/storage.service';
+import { EncomendasPage } from '../encomendas/encomendas';
 
 
 @Component({
@@ -18,7 +20,8 @@ export class HomePage {
   constructor(
     public navCtrl: NavController,
      public menu: MenuController,
-     public loginService: LoginService) {
+     public loginService: LoginService,
+     public storage: StorageService) {
 
   }
 
@@ -26,9 +29,9 @@ export class HomePage {
     this.loginService.authenticate(this.creds)
       .subscribe(response => {
         this.loginService.successfulLogin(response.headers.get('Authorization'));
-        this.navCtrl.setRoot('EncomendasPage');
       },
       error => {});   
+      this.navCtrl.setRoot(EncomendasPage);
   }
 
   ionViewWillEnter() {
@@ -39,8 +42,8 @@ export class HomePage {
     this.menu.swipeEnable(true);
   }
 
-  ionViewDidLoad() {
-    this.loginService.logout();
+  ionViewDidEnter() {
+    //this.loginService.logout();
   }
 
   registrar(){
