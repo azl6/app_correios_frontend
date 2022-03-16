@@ -17,22 +17,23 @@ import { EncomendaDTO } from '../../models/encomenda.dto';
 export class EncomendaDetailsPage {
 
   encomenda: EncomendaDTO;
+  status: string;
   
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     this.encomenda = this.navParams.data;
-
-    switch(this.encomenda.enderecoDeEntrega.status){
+    console.log(this.navParams.get("status"))
+    switch(this.navParams.get("status")){
       case "PENDENTE_DE_ENVIO":
-        this.encomenda.enderecoDeEntrega.status = "Pendente de envio";
+        this.status = "Pendente de envio"
         break;
       case "ENTREGUE":
-        this.encomenda.enderecoDeEntrega.status = "Entregue";
+        this.status = "Entregue"
         break;
       case "ENVIADO":
-        this.encomenda.enderecoDeEntrega.status = "Enviado";
+        this.status = "Enviado"
         break;
     }
     console.log(this.encomenda);
