@@ -25,5 +25,8 @@ page-home {
             color: rgb(33, 95, 140);
         }
 
+        ion-content {
+            --overflow: hidden;
+        }
 
 }

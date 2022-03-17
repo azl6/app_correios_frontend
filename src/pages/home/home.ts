@@ -32,7 +32,7 @@ export class HomePage {
         .subscribe(response => {
           this.loginService.successfulLogin(response.headers.get("Authorization"));
           //console.log("Isso deve rodar primeiro");
-          resolve("oi")
+          resolve(response)
         }, () => reject(console.log("ERRO!")))
       });
       
@@ -50,7 +50,7 @@ export class HomePage {
   }
 
   ionViewDidEnter() {
-    this.loginService.logout();
+    //this.loginService.logout();
   }
 
   registrar(){
