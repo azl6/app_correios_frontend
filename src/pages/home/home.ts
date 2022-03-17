@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MenuController, NavController } from 'ionic-angular';
+import { ReplaySubject } from 'rxjs';
 import { CredenciaisDTO } from '../../models/credenciais.dto';
 import { LoginService } from '../../services/login.service';
 import { StorageService } from '../../services/storage.service';
@@ -26,12 +27,18 @@ export class HomePage {
   }
 
   login(){
-    this.loginService.authenticate(this.creds)
-      .subscribe(response => {
-        this.loginService.successfulLogin(response.headers.get('Authorization'));
-      },
-      error => {});   
-      this.navCtrl.setRoot(EncomendasPage);
+      const request = new Promise((resolve, reject)=> {
+        this.loginService.authenticate(this.creds)
+        .subscribe(response => {
+          this.loginService.successfulLogin(response.headers.get("Authorization"));
+          //console.log("Isso deve rodar primeiro");
+          resolve("oi")
+        }, () => reject(console.log("ERRO!")))
+      });
+      
+      request.then(() => {
+        this.navCtrl.setRoot('EncomendasPage')
+      })
   }
 
   ionViewWillEnter() {
@@ -43,7 +50,7 @@ export class HomePage {
   }
 
   ionViewDidEnter() {
-    //this.loginService.logout();
+    this.loginService.logout();
   }
 
   registrar(){
