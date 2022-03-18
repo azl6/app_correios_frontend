@@ -27,11 +27,11 @@ export class EncomendasPage {
   }
 
   ionViewDidEnter(){
-    this.items = this.encomendaService.findLoggedUserEncomendas();
+    
   }
   
   ionViewWillEnter(){
-    
+    this.items = this.encomendaService.findLoggedUserEncomendas();
   }
 
   details(encomenda: EncomendaDTO){

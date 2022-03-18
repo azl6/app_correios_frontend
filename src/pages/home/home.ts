@@ -27,18 +27,15 @@ export class HomePage {
   }
 
   login(){
-      const request = new Promise((resolve, reject)=> {
-        this.loginService.authenticate(this.creds)
-        .subscribe(response => {
-          this.loginService.successfulLogin(response.headers.get("Authorization"));
-          //console.log("Isso deve rodar primeiro");
-          resolve(response)
-        }, () => reject(console.log("ERRO!")))
-      });
-      
-      request.then(() => {
-        this.navCtrl.setRoot('EncomendasPage')
-      })
+    const navCtrl = this.navCtrl;
+    this.loginService.authenticate(this.creds)
+    .subscribe(async response => {
+      const result = await this.loginService.successfulLogin(response.headers.get("Authorization"));
+
+      if (result) {
+        navCtrl.setRoot('EncomendasPage');
+      }
+    }, err => console.log)
   }
 
   ionViewWillEnter() {
@@ -50,7 +47,7 @@ export class HomePage {
   }
 
   ionViewDidEnter() {
-    //this.loginService.logout();
+    this.loginService.logout();
   }
 
   registrar(){

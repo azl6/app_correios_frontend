@@ -32,24 +32,25 @@ export class LoginService {
             });
     }
 
-    successfulLogin(authorizationValue : string) {
-        let tok = authorizationValue.substring(7);
-        let decodedEmail = this.jwtHelper.decodeToken(tok).sub;
-        //aba de modificacao
-        this.clienteService.findByEmail(decodedEmail, tok)
-        .subscribe(response => {
-            let user : LocalUser = {
-                token: tok,
-                email: decodedEmail,
-                cliente: response
-            };
-            console.log("antes de salvar:")
-            console.log(user)
-            this.storage.setLocalUser(user);
-            console.log("depois de salvar:")
-            console.log(this.storage.getLocalUser())
-        }, error => {});
-        //fim da aba de modificacao
+    successfulLogin(authorizationValue: string): Promise<unknown> {
+        return new Promise((resolve, reject) => {
+
+            const token = authorizationValue.substring(7);
+            const email = this.jwtHelper.decodeToken(token).sub;
+
+            this.clienteService.findByEmail(email, token)
+                .subscribe(cliente => {
+                    const user: LocalUser = {
+                        token,
+                        email,
+                        cliente
+                    }
+
+                    this.storage.setLocalUser(user);
+                    resolve(true);
+                }, err => reject(err));
+        })
+
     }
 
     logout() {
