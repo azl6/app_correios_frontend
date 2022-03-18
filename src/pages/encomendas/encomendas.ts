@@ -23,7 +23,8 @@ export class EncomendasPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    public encomendaService: EncomendaService) {
+    public encomendaService: EncomendaService,
+    public loader: LoadingController) {
   }
 
   ionViewDidEnter(){
@@ -35,8 +36,18 @@ export class EncomendasPage {
   }
 
   details(encomenda: EncomendaDTO){
+    let loader = this.presentLoading();
     this.navCtrl.push(EncomendaDetailsPage, encomenda)
+    loader.dismiss();
   }
+
+  presentLoading(){
+    let loader = this.loader.create({
+        content: "Carregando..."
+    });
+    loader.present();
+    return loader;
+}
 
 
 

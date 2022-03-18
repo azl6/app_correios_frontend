@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { AlertController, IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AlertController, IonicPage, LoadingController, NavController, NavParams } from 'ionic-angular';
 import { API_CONFIG } from '../../config/api.config';
 import { ClienteDTO } from '../../models/cliente.dto';
 import { HomePage } from '../home/home';
@@ -29,11 +29,12 @@ export class RegistroPage {
       public navCtrl: NavController,
       public navParams: NavParams,
       public http: HttpClient,
-      public alertCtrl: AlertController) {
+      public alertCtrl: AlertController,
+      public loader: LoadingController) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad RegistroPage');
+    this.navParams.data.dismiss();
   }
 
   registrar(){
@@ -43,9 +44,7 @@ export class RegistroPage {
       email: this.dados.email,
       senha: this.dados.senha
     };
-
-    console.log(dadosNotTyped)
-
+    let loader = this.presentLoading();
     return this.http.post(
       `${API_CONFIG.baseUrl}/clientes/new`, 
       dadosNotTyped)
@@ -59,9 +58,18 @@ export class RegistroPage {
               }
           ]
       });
+      loader.dismiss();
       alert.present();
       this.navCtrl.setRoot(HomePage)
       }, error => {});
   }
+
+  presentLoading(){
+    let loader = this.loader.create({
+        content: "Registrando..."
+    });
+    loader.present();
+    return loader;
+}
 
 }

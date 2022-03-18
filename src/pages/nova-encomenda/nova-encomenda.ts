@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { AlertController, IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AlertController, IonicPage, LoadingController, NavController, NavParams } from 'ionic-angular';
 import { EncomendaDTO } from '../../models/encomenda.dto';
 import { LocalUser } from '../../models/local_user';
 import { EncomendaService } from '../../services/encomendas.service';
@@ -22,6 +22,7 @@ import { EncomendasPage } from '../encomendas/encomendas';
 export class NovaEncomendaPage {
 
   codigo: string = "";
+  loader: any;
 
   constructor(
     public navCtrl: NavController,
@@ -29,22 +30,19 @@ export class NovaEncomendaPage {
      public http: HttpClient,
      public encomendaService: EncomendaService,
      public storage: StorageService,
-     public alertCtrl: AlertController) {
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad NovaEncomendaPage');
+     public alertCtrl: AlertController,
+     public loadingCtrl: LoadingController) {
   }
 
   busca_encomenda(codigo: string){
+    const loader = this.presentLoadingOne();
     this.encomendaService.findByCodigo(codigo)
     .subscribe(response => {
-      console.log("Encomenda encontrada!")
+      loader.dismiss();
       let usr: LocalUser = this.storage.getLocalUser();
       usr.cliente.encomenda[usr.cliente.encomenda.length] = response;
       this.storage.setLocalUser(usr); 
-      console.log("localStorage após procurar encomenda!")
-      console.log(this.storage.getLocalUser());
+
       let alert = this.alertCtrl.create({
         title: 'Encomenda adicionada!',
         enableBackdropDismiss: false,
@@ -58,5 +56,29 @@ export class NovaEncomendaPage {
     this.navCtrl.setRoot(EncomendasPage)
     }, error => {})
   }
+
+  ionViewWillEnter(){
+    this.loader = this.presentLoadingTwo();
+  }
+
+  ionViewDidEnter(){
+    this.loader.dismiss();
+  }
+
+  presentLoadingOne(){
+    let loader = this.loadingCtrl.create({
+        content: "Buscando encomenda..."
+    });
+    loader.present();
+    return loader;
+}
+
+presentLoadingTwo(){
+  let loader = this.loadingCtrl.create({
+      content: "Carregando..."
+  });
+  loader.present();
+  return loader;
+}
 
 }

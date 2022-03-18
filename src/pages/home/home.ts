@@ -29,7 +29,7 @@ export class HomePage {
 
   login(){
     const navCtrl = this.navCtrl;
-    const loader = this.presentLoading();
+    const loader = this.presentLoadingTwo();
     this.loginService.authenticate(this.creds)
     .subscribe(async response => {
       const result = await this.loginService.successfulLogin(response.headers.get("Authorization"));
@@ -53,15 +53,24 @@ export class HomePage {
   }
 
   registrar(){
-    this.navCtrl.push("RegistroPage")
+    let loader = this.presentLoadingOne();
+    this.navCtrl.push("RegistroPage", loader);
   }
 
-  presentLoading(){
+  presentLoadingOne(){
     let loader = this.loadingCtrl.create({
-        content: "Logando..."
+        content: "Carregando..."
     });
     loader.present();
     return loader;
+}
+
+presentLoadingTwo(){
+  let loader = this.loadingCtrl.create({
+      content: "Logando..."
+  });
+  loader.present();
+  return loader;
 }
 
 }
