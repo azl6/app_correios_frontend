@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MenuController, NavController } from 'ionic-angular';
+import { LoadingController, MenuController, NavController } from 'ionic-angular';
 import { ReplaySubject } from 'rxjs';
 import { CredenciaisDTO } from '../../models/credenciais.dto';
 import { LoginService } from '../../services/login.service';
@@ -22,16 +22,18 @@ export class HomePage {
     public navCtrl: NavController,
      public menu: MenuController,
      public loginService: LoginService,
-     public storage: StorageService) {
+     public storage: StorageService,
+     public loadingCtrl: LoadingController) {
 
   }
 
   login(){
     const navCtrl = this.navCtrl;
+    const loader = this.presentLoading();
     this.loginService.authenticate(this.creds)
     .subscribe(async response => {
       const result = await this.loginService.successfulLogin(response.headers.get("Authorization"));
-
+      loader.dismiss();
       if (result) {
         navCtrl.setRoot('EncomendasPage');
       }
@@ -53,5 +55,13 @@ export class HomePage {
   registrar(){
     this.navCtrl.push("RegistroPage")
   }
+
+  presentLoading(){
+    let loader = this.loadingCtrl.create({
+        content: "Logando..."
+    });
+    loader.present();
+    return loader;
+}
 
 }

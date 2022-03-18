@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, LoadingController, NavController, NavParams } from 'ionic-angular';
 import { EncomendaDTO } from '../../models/encomenda.dto';
 import { EncomendaService } from '../../services/encomendas.service';
 import { EncomendaDetailsPage } from '../encomenda-details/encomenda-details';
@@ -37,5 +37,7 @@ export class EncomendasPage {
   details(encomenda: EncomendaDTO){
     this.navCtrl.push(EncomendaDetailsPage, encomenda)
   }
+
+
 
 }

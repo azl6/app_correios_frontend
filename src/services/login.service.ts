@@ -32,7 +32,7 @@ export class LoginService {
             });
     }
 
-    successfulLogin(authorizationValue: string): Promise<unknown> {
+    successfulLogin(authorizationValue: string): Promise<any> {
         return new Promise((resolve, reject) => {
 
             const token = authorizationValue.substring(7);
